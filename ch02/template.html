@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+<div id="example">
+    <table id="list" style="border-collapse: collapse; border: 1px solid black; text-align: center;">
+        <thead style="background-color: yellow">
+        <tr>
+            <th>INDEX</th>
+            <th>번호</th>
+            <th>이름</th>
+            <th>전화번호</th>
+            <th>주소</th>
+        </tr>
+        </thead>
+        <tbody id="contacts">
+        <template v-for="(contact, index) in contacts">
+            <tr>
+                <td>{{index+1}}</td>
+                <td>{{contact.no}}</td>
+                <td>{{contact.name}}</td>
+                <td>{{contact.tel}}</td>
+                <td>{{contact.address}}</td>
+            </tr>
+            <tr style="background-color: red" v-if="index%5===4">
+                <td colspan="5"></td>
+            </tr>
+        </template>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+
+    var model = {
+        "pageno": 1,
+        "pagesize": 10,
+        "totalcount": 100,
+        "contacts": [
+            {"no": 100, "name": "개똥", "tel": "010-1010-2020", "address": "서울"},
+            {"no": 100, "name": "개똥", "tel": "010-1010-2020", "address": "서울"},
+            {"no": 100, "name": "개똥", "tel": "010-1010-2020", "address": "서울"},
+            {"no": 100, "name": "개똥", "tel": "010-1010-2020", "address": "서울"},
+            {"no": 100, "name": "개똥", "tel": "010-1010-2020", "address": "서울"},
+            {"no": 100, "name": "개똥", "tel": "010-1010-2020", "address": "서울"},
+            {"no": 100, "name": "개똥", "tel": "010-1010-2020", "address": "서울"},
+            {"no": 100, "name": "개똥", "tel": "010-1010-2020", "address": "서울"}
+        ]
+    };
+
+    var list = new Vue({
+        el: "#example",
+        data: model
+    });
+
+</script>
+
+</body>
+</html>

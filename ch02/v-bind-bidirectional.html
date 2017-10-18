@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+<div id="simple">
+    <input id="a" type="text" v-model="name" placeholder="이름은 입력해주세요" >
+    <br />
+    이름 입력 : <h2 v-html="name"></h2>
+</div>
+
+<script type="text/javascript">
+
+    var towway = new Vue({
+        el : '#simple',
+        data : {
+            name : ''
+        }
+    })
+</script>
+
+</body>
+</html>
