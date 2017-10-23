@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+    <style>
+        .layout1 {
+            margin: 30px 30px 30px 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="example" class="container layout1">
+    <p>
+        <input type="text" v-model="amount" class="form-control">
+    </p>
+    <p>
+        <button id="deposit" v-on:click="balance += parseInt(amount)" class="btn btn-primary">예금</button>
+        <button id="withdraw" v-on:click="balance -= parseInt(amount)" class="btn btn-warning">인출</button>
+    </p>
+    <h3>계좌잔고 : {{balance}}</h3>
+</div>
+
+<script type="text/javascript">
+
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            amount: 0,
+            balance: 0,
+        }
+    })
+</script>
+
+</body>
+</html>
