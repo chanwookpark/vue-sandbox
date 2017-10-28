@@ -105,13 +105,13 @@
             }
         },
         methods: {
-            checked: function () {
+            checked: function (done) {
                 if (done) return {checked: true};
                 else return {checked: false};
             },
             addTodo: function (todo) {
                 if (todo !== "") {
-                    this.todolist.push({todo: todo, done: fase});
+                    this.todolist.push({todo: todo, done: false});
                 }
             },
             doneToggle: function (index) {
@@ -125,12 +125,65 @@
 </script>
 <!-- list-component -->
 
+<!-- input-component -->
+<style>
+    .input {
+        border: none;
+        width: 75%;
+        height: 35px;
+        padding: 10px;
+        float: left;
+        font-size: 16px;
+    }
+
+    .addbutton {
+        padding: 10px;
+        width: 25%;
+        height: 35px;
+        background: #d9d9d9;
+        color: #555;
+        float: left;
+        text-align: center;
+        font-size: 13px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .addbutton:hover {
+        background-color: #bbb;
+    }
+</style>
+<template id="input-template">
+    <div>
+        <input class="input" type="text" id="task" v-model.trim="todo" placeholder="입력 후 엔터!"
+               v-on:keyup.enter="addTodo">
+        <span class="addbutton" v-on:click="addTodo">추 가</span>
+    </div>
+</template>
+<script type="text/javascript">
+    Vue.component('input-component', {
+        template: '#input-template',
+        data: function () {
+            return {todo: ''};
+        },
+        methods: {
+            addTodo: function () {
+                eventBus.$emit('add-todo', this.todo);
+                this.todo = '';
+            }
+        }
+    })
+</script>
+<!-- input-component -->
+
 <body>
 
 <div id="todolistapp">
     <div id="header" class="header">
         <h2>Todo List App</h2>
+        <input-component></input-component>
     </div>
+    <list-component></list-component>
 </div>
 
 <script type="text/javascript">
